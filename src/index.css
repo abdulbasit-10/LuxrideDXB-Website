@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand palette — LuxRideDXB */
+  --color-brand-black: #161515;
+  --color-brand-black-soft: #1d1c1c;
+  --color-brand-red: #ff0c09;
+  --color-brand-maroon: #3d2321;
+  --color-brand-gray: #999493;
+  --color-brand-gray-light: #c0baba;
+  --color-brand-white: #f8f4f4;
+
+  --font-display: 'Oswald', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  @apply bg-white font-body text-brand-black;
+}
