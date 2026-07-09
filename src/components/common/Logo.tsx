@@ -3,7 +3,7 @@ import logoSrc from '@/assets/logo.png';
 import { siteConfig } from '@/data/siteConfig';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'hero';
+  size?: 'sm' | 'md' | 'header' | 'footer' | 'hero';
   className?: string;
 }
 
@@ -13,12 +13,16 @@ interface LogoProps {
 const linkSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {
   sm: 'h-12 lg:h-14',
   md: 'h-14 lg:h-16',
-  hero: 'h-12 lg:absolute lg:top-[-33.34px] lg:left-[7px] lg:h-[154.34px] lg:w-[270.61px]',
+  header: 'h-[52px] w-[172px] lg:h-[63px] lg:w-[190px]',
+  footer: 'h-[55px] w-[188px] lg:h-[61px] lg:w-[202px]',
+  hero: 'h-12 lg:absolute lg:top-[-24px] lg:left-[7px] lg:h-[154.34px] lg:w-[270.61px]',
 };
 
 const imgSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {
   sm: 'w-auto',
   md: 'w-auto',
+  header: 'w-full',
+  footer: 'w-full',
   hero: 'w-auto lg:w-full',
 };
 

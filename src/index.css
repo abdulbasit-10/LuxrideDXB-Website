@@ -13,6 +13,8 @@
   --font-display: 'Oswald', system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
+  --font-figma-nav: 'Rajdhani', system-ui, sans-serif;
+  --font-figma-scroll: 'Montserrat', system-ui, sans-serif;
 }
 
 body {
