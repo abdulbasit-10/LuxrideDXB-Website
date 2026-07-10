@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { FaCarSide } from 'react-icons/fa';
 import { FiMail, FiPhone } from 'react-icons/fi';
 import { Container } from '@/components/common/Container';
-import { Button } from '@/components/common/Button';
+import { ContactSection } from '@/components/contact/ContactSection';
+import { FleetSection } from '@/components/fleet/FleetSection';
+import { MissionVisionSection } from '@/components/mission/MissionVisionSection';
+import { ServicesSection } from '@/components/services/ServicesSection';
+import { ClientVoicesSection } from '@/components/testimonials/ClientVoicesSection';
+import { WhyLuxurySection } from '@/components/why/WhyLuxurySection';
 
 interface BookingForm {
   fullName: string;
@@ -254,284 +259,17 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Fleet Section */}
-      <section
-        id="fleet"
-        className="bg-brand-white py-20 lg:py-32"
-        aria-label="Premium vehicle fleet"
-      >
-        <Container>
-          <div className="text-center mb-16">
-            <p className="text-brand-red font-serif italic mb-2">
-              Premium Selection
-            </p>
-            <h2 className="text-3xl lg:text-5xl font-bold text-brand-black mb-4">
-              Vehicles Worthy of <span className="text-brand-red italic">Every Occasion</span>
-            </h2>
-          </div>
+      <FleetSection />
 
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            {[
-              {
-                badge: 'PREMIUM',
-                name: 'Mercedes S-Class',
-                features: ['Leather Interior', '5 Passengers', 'WiFi Connected'],
-              },
-              {
-                badge: 'ULTIMATE',
-                name: 'Range Rover Vogue',
-                features: ['Premium Leather', '7 Passengers', 'Entertainment System'],
-              },
-            ].map((vehicle, idx) => (
-              <div
-                key={idx}
-                className="group overflow-hidden rounded-2xl bg-brand-black-soft shadow-lg transition"
-              >
-                <div className="relative overflow-hidden bg-brand-black h-64 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-b from-brand-red/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-                  <div className="text-center text-brand-gray">
-                    [Vehicle Image]
-                  </div>
-                </div>
-                <div className="p-6">
-                  <span className="inline-block bg-brand-red text-brand-white px-3 py-1 text-xs font-bold rounded mb-4">
-                    {vehicle.badge}
-                  </span>
-                  <h3 className="text-2xl font-bold text-brand-white mb-4">
-                    {vehicle.name}
-                  </h3>
-                  <ul className="mb-6 space-y-2">
-                    {vehicle.features.map((feature, fidx) => (
-                      <li key={fidx} className="text-brand-gray text-sm flex items-center">
-                        <span className="mr-2 text-brand-red">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex gap-4">
-                    <Button className="flex-1">Book Now</Button>
-                    <Button variant="outline" className="flex-1">
-                      Get Quote
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ServicesSection />
 
-      {/* Services Section */}
-      <section
-        id="services"
-        className="bg-brand-black py-20 lg:py-32"
-        aria-label="Our services"
-      >
-        <Container>
-          <div className="text-center mb-16">
-            <p className="text-brand-red font-serif italic mb-2">
-              What We Offer
-            </p>
-            <h2 className="text-3xl lg:text-5xl font-bold text-brand-white mb-4">
-              A Service for <span className="text-brand-red italic">Every Journey</span>
-            </h2>
-          </div>
+      <WhyLuxurySection />
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { title: 'Airport Transfers', icon: '✈️' },
-              { title: 'VIP Events', icon: '🎉' },
-              { title: 'Corporate Transport', icon: '💼' },
-              { title: 'Weddings', icon: '💒' },
-              { title: 'Beach Chauffeur', icon: '🏖️' },
-              { title: 'Private Luxury', icon: '👑' },
-              { title: 'Roadshow', icon: '🚗' },
-              { title: 'Full-Day Hire', icon: '⏰' },
-            ].map((service, idx) => (
-              <div
-                key={idx}
-                className="group border-2 border-brand-red/20 rounded-lg p-6 text-center transition hover:border-brand-red hover:bg-brand-red/5"
-              >
-                <div className="mb-4 text-4xl">{service.icon}</div>
-                <h3 className="text-lg font-semibold text-brand-white group-hover:text-brand-red transition">
-                  {service.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <MissionVisionSection />
 
-      {/* Why Choose Us Section */}
-      <section
-        id="about"
-        className="bg-brand-white py-20 lg:py-32"
-        aria-label="Why choose us"
-      >
-        <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-brand-red font-serif italic mb-2">
-                Our Excellence
-              </p>
-              <h2 className="text-3xl lg:text-5xl font-bold text-brand-black mb-8">
-                The Standard Others <span className="text-brand-red italic">Aspire To</span>
-              </h2>
-              <ul className="space-y-6">
-                {[
-                  'Premium Hotel Quality Service',
-                  'Professional Chauffeurs',
-                  'Modern Fleet',
-                  'Safety Guarantee',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex gap-4">
-                    <span className="text-2xl font-bold text-brand-red min-w-8">
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <span className="text-lg text-brand-gray font-medium">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden bg-brand-black">
-              <div className="w-full h-full flex items-center justify-center text-brand-gray">
-                [Luxury Interior Image]
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <ClientVoicesSection />
 
-      {/* Mission & Vision Section */}
-      <section className="bg-brand-black py-20 lg:py-32">
-        <Container>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-            {[
-              {
-                label: 'Mission',
-                title: 'Redefining Premium Mobility in Dubai',
-                description:
-                  'We deliver uncompromising luxury and reliability, setting the standard for professional chauffeur services.',
-              },
-              {
-                label: 'Vision',
-                title: 'The UAE\'s Most Trusted Luxury Chauffeur Brand',
-                description:
-                  'To be the preferred choice for discerning clients seeking premium transportation experiences.',
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="rounded-lg bg-brand-black-soft p-8">
-                <p className="text-brand-red font-serif italic mb-3 text-sm">
-                  {item.label}
-                </p>
-                <h3 className="text-2xl font-bold text-brand-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-brand-gray">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="bg-brand-white py-20 lg:py-32">
-        <Container>
-          <div className="text-center mb-16">
-            <p className="text-brand-red font-serif italic mb-2">
-              Client Reviews
-            </p>
-            <h2 className="text-3xl lg:text-5xl font-bold text-brand-black mb-4">
-              Trusted by Dubai's <span className="text-brand-red italic">Finest</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                stars: 5,
-                quote:
-                  'Exceptional service! The professionalism and attention to detail is unmatched.',
-                author: 'Sheikh Abdullah',
-              },
-              {
-                stars: 5,
-                quote:
-                  'Best luxury chauffeur service in Dubai. Highly recommended for VIP events.',
-                author: 'Sarah Mansell',
-              },
-              {
-                stars: 5,
-                quote:
-                  'Professional, punctual, and absolutely reliable. Worth every penny.',
-                author: 'James Thompson',
-              },
-            ].map((testimonial, idx) => (
-              <div key={idx} className="rounded-lg bg-brand-black p-8">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(testimonial.stars)].map((_, i) => (
-                    <span key={i} className="text-brand-red">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-6 text-brand-gray italic">
-                  "{testimonial.quote}"
-                </p>
-                <p className="font-semibold text-brand-white">
-                  {testimonial.author}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Contact Section */}
-      <section
-        id="contact"
-        className="bg-brand-black py-20 lg:py-32"
-        aria-label="Contact information"
-      >
-        <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-brand-red font-serif italic mb-2">
-                Get in Touch
-              </p>
-              <h2 className="text-3xl lg:text-5xl font-bold text-brand-white mb-8">
-                We're Available <span className="text-brand-red italic">Around the Clock</span>
-              </h2>
-
-              <div className="mb-8 space-y-6">
-                {[
-                  { label: 'Phone', value: '+971 4 000 0000' },
-                  { label: 'Email', value: 'concierge@luxridedxb.com' },
-                  { label: 'Location', value: 'Downtown Dubai, UAE' },
-                  { label: '24/7 Support', value: 'Available on WhatsApp' },
-                ].map((item, idx) => (
-                  <div key={idx}>
-                    <p className="text-sm text-brand-gray mb-1">{item.label}</p>
-                    <p className="text-lg text-brand-white font-semibold">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <Button className="w-full">Get in Touch</Button>
-            </div>
-
-            <div className="relative h-96 rounded-2xl overflow-hidden bg-brand-black-soft">
-              <div className="w-full h-full flex items-center justify-center text-brand-gray">
-                [Dubai Skyline Image]
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <ContactSection />
     </main>
   );
 }
