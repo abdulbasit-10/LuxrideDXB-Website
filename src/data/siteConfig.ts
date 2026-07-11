@@ -4,7 +4,7 @@ export const siteConfig = {
   name: 'LuxRideDXB',
   tagline: 'Arrive Like You Mean It',
   description:
-    "Dubai's premier luxury chauffeur service — connecting discerning clients with world-class transport since 2017.",
+    "Dubai's premier luxury chauffeur service connecting discerning clients with world class transport since 2017.",
   foundedYear: 2017,
 };
 
@@ -29,22 +29,30 @@ export const footerLegalLinks: FooterLink[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: 'YouTube', href: 'https://youtube.com', icon: 'youtube' },
-  { label: 'TikTok', href: 'https://tiktok.com', icon: 'tiktok' },
-  { label: 'WhatsApp', href: 'https://wa.me/97140000000', icon: 'whatsapp' },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/luxridedxb?igsh=M2wzODFjbWVxZXEw',
+    icon: 'instagram',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/share/1E2ChbeYaK/',
+    icon: 'facebook',
+  },
+  { label: 'WhatsApp', href: 'https://wa.me/971523695478', icon: 'whatsapp' },
 ];
 
 export const contactDetails: ContactDetail[] = [
   {
     label: 'Phone',
-    value: '+971 4 000 0000',
-    href: 'tel:+97140000000',
+    value: '+971 52 369 5478',
+    href: 'tel:+971523695478',
     icon: 'phone',
   },
   {
     label: 'Email',
-    value: 'concierge@luxridedxb.com',
-    href: 'mailto:concierge@luxridedxb.com',
+    value: 'luxridedxb@gmail.com',
+    href: 'mailto:luxridedxb@gmail.com',
     icon: 'email',
   },
   {

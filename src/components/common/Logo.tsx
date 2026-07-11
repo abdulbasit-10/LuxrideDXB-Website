@@ -7,15 +7,12 @@ interface LogoProps {
   className?: string;
 }
 
-// "hero" reproduces an exact Width/Height/Top/Left placement (270.61 x 154.34,
-// offset -33.34/7) from the reference design, applied from lg: up so it bleeds
-// above the header bar without disturbing the mobile layout.
 const linkSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {
   sm: 'h-12 lg:h-14',
   md: 'h-14 lg:h-16',
   header: 'h-[52px] w-[172px] lg:h-[63px] lg:w-[190px]',
   footer: 'h-[55px] w-[188px] lg:h-[61px] lg:w-[202px]',
-  hero: 'h-12 lg:absolute lg:top-[-24px] lg:left-[7px] lg:h-[154.34px] lg:w-[270.61px]',
+  hero: 'h-12 lg:absolute lg:top-[-13px] lg:left-[0px] lg:h-[118px] lg:w-[207px]',
 };
 
 const imgSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {

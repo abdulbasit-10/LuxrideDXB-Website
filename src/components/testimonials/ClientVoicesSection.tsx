@@ -1,5 +1,7 @@
 ﻿import { Star } from 'lucide-react';
 
+import quoteIcon from '@/assets/ri_double-quotes-r.svg';
+
 const testimonials = [
   {
     quote:
@@ -23,31 +25,37 @@ const testimonials = [
 
 export function ClientVoicesSection() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] bg-[#171414] px-[32px] py-[72px]">
+    <section
+      id="testimonials"
+      className="mx-auto w-full max-w-[1440px] bg-[#171414] px-[24px] py-[56px] md:px-[32px]"
+    >
       <div className="mx-auto max-w-[760px] text-center">
         <p className="font-body text-[13px] leading-none font-medium tracking-[0.28em] text-[#ef4e3a]">
           Client Voices
         </p>
-        <h2 className="mt-[19px] font-serif text-[40px] leading-[1.05] font-bold tracking-[0] text-[#f4f4f4] md:text-[48px]">
+        <h2 className="mt-[16px] font-serif text-[34px] leading-[1.05] font-bold tracking-[0] text-[#f4f4f4] md:text-[42px]">
           Trusted by Dubai&apos;s{' '}
           <span className="text-[#ef4e3a] italic">Finest</span>
         </h2>
-        <p className="mx-auto mt-[25px] max-w-[650px] font-body text-[17px] leading-[1.25] font-normal text-[#bdb7b5]">
+        <p className="mx-auto mt-[20px] max-w-[620px] font-body text-[15px] leading-[1.45] font-normal text-[#bdb7b5]">
           Hear from the executives, dignitaries, and event professionals who
           rely on us every day.
         </p>
       </div>
 
-      <div className="mx-auto mt-[38px] grid max-w-[1180px] grid-cols-1 gap-[16px] md:grid-cols-2 xl:grid-cols-3">
+      <div className="mx-auto mt-[34px] grid max-w-[1080px] grid-cols-1 gap-[16px] md:grid-cols-2 xl:grid-cols-3">
         {testimonials.map((testimonial) => (
           <article
             key={testimonial.name}
-            className="flex h-auto min-h-[284px] flex-col border border-white/[0.08] bg-[#151313] p-[28px] shadow-[0_22px_35px_rgba(0,0,0,0.22)]"
+            className="flex h-auto min-h-[250px] flex-col border border-white/[0.08] bg-[#151313] p-[24px] shadow-[0_18px_28px_rgba(0,0,0,0.18)] transition duration-300 hover:border-[#e75041]"
           >
             <div className="mb-7">
-              <div className="text-[46px] leading-none font-bold text-[#ef4e3a]">
-                &rdquo;
-              </div>
+              <img
+                src={quoteIcon}
+                alt=""
+                aria-hidden="true"
+                className="h-[32px] w-[32px]"
+              />
 
               <div
                 aria-label="5 star rating"
@@ -64,8 +72,8 @@ export function ClientVoicesSection() {
               </div>
             </div>
 
-            <p className="font-body text-[15.5px] leading-[1.2] font-normal text-[#e0dddd] italic">
-              &quot;{testimonial.quote}&quot;
+            <p className="font-body text-[14.5px] leading-[1.35] font-normal text-[#e0dddd] italic">
+              {testimonial.quote}
             </p>
 
             <div className="mt-auto pt-[28px]">

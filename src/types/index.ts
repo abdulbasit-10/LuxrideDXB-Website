@@ -11,7 +11,7 @@ export interface FooterLink {
 export interface SocialLink {
   label: string;
   href: string;
-  icon: 'youtube' | 'tiktok' | 'whatsapp';
+  icon: 'instagram' | 'facebook' | 'whatsapp';
 }
 
 export interface ContactDetail {
