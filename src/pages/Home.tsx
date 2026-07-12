@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FiCalendar, FiClock, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Container } from '@/components/common/Container';
 import { ContactSection } from '@/components/contact/ContactSection';
 import { FleetSection } from '@/components/fleet/FleetSection';
@@ -17,6 +18,8 @@ interface BookingForm {
   phone: string;
 }
 
+const WHATSAPP_NUMBER = '971523695478';
+
 export function Home() {
   const [formData, setFormData] = useState<BookingForm>({
     fullName: '',
@@ -26,7 +29,6 @@ export function Home() {
     time: '',
     phone: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error';
     message: string;
@@ -48,61 +50,35 @@ export function Home() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+    const message = [
+      'Hello LuxRideDXB, I would like to request a booking.',
+      '',
+      `Name: ${formData.fullName}`,
+      `Phone / WhatsApp: ${formData.phone}`,
+      `Pickup: ${formData.pickupLocation}`,
+      `Drop-off: ${formData.dropoffLocation}`,
+      `Date: ${formData.date}`,
+      `Time: ${formData.time}`,
+    ].join('\n');
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    try {
-      const response = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const responseText = await response.text();
-      let result: {
-        success?: boolean;
-        message?: string;
-      } = {};
+    const whatsappWindow = window.open(
+      whatsappUrl,
+      '_blank',
+      'noopener,noreferrer',
+    );
 
-      if (responseText) {
-        try {
-          result = JSON.parse(responseText) as typeof result;
-        } catch {
-          result = {};
-        }
-      }
-
-      if (!response.ok) {
-        throw new Error(
-          result.message ||
-            'Enquiry API is unavailable. Please run the project with Vercel Dev.',
-        );
-      }
-
-      setSubmitStatus({
-        type: 'success',
-        message: result.message || 'Your enquiry has been sent.',
-      });
-      setFormData({
-        fullName: '',
-        pickupLocation: '',
-        dropoffLocation: '',
-        date: '',
-        time: '',
-        phone: '',
-      });
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message:
-          error instanceof Error
-            ? error.message
-            : 'Unable to send your enquiry.',
-      });
-    } finally {
-      setIsSubmitting(false);
+    if (!whatsappWindow) {
+      window.location.href = whatsappUrl;
+      return;
     }
+
+    setSubmitStatus({
+      type: 'success',
+      message: 'WhatsApp opened. Please press Send to share your booking request.',
+    });
   };
 
   const travelSteps = [
@@ -308,10 +284,10 @@ export function Home() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="mx-auto mt-[28px] flex h-[48px] w-full max-w-[200px] items-center justify-center bg-[#e75041] font-figma-nav text-[15px] leading-none font-bold tracking-[0.08em] text-white uppercase transition duration-200 hover:bg-[#f26354] disabled:cursor-not-allowed disabled:opacity-65"
+                className="mx-auto mt-[28px] flex h-[48px] w-full max-w-[240px] items-center justify-center gap-[8px] bg-[#e75041] font-figma-nav text-[15px] leading-none font-bold tracking-[0.08em] text-white uppercase transition duration-200 hover:bg-[#f26354] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e75041]"
               >
-                {isSubmitting ? 'Sending...' : 'Enquire Now'}
+                <FaWhatsapp aria-hidden="true" className="h-[18px] w-[18px]" />
+                Continue on WhatsApp
               </button>
               {submitStatus && (
                 <p

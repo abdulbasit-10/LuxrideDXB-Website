@@ -100,25 +100,15 @@ export function TermsAndConditions() {
         <div className="text-left">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm font-bold text-brand-red hover:text-brand-red/80"
+            className="inline-flex items-center gap-2 rounded-[4px] border border-[#e75041] px-[14px] py-[9px] text-sm font-bold text-[#e75041] transition-colors hover:bg-[#e75041] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e75041]"
           >
             <FiArrowLeft />
             Back
           </Link>
         </div>
 
-        <h1 
-          style={{
-            width: '604px',
-            height: '85px',
-            fontSize: '64px',
-            fontFamily: 'Playfair Display',
-            fontWeight: 700,
-            lineHeight: '100%',
-            letterSpacing: '0%',
-            textAlign: 'center',
-          }}
-          className="mt-6 font-serif font-bold text-brand-white mx-auto"
+        <h1
+          className="mx-auto mt-8 font-serif text-[38px] leading-none font-bold text-brand-white sm:text-[50px] lg:text-[64px]"
         >
           Terms & Conditions
         </h1>
@@ -146,7 +136,7 @@ export function TermsAndConditions() {
                   <p className="mt-4 leading-relaxed">{section.intro}</p>
                 )}
                 {section.bullets && (
-                  <ul className="mt-4 list-disc space-y-2 pl-5 marker:text-brand-red">
+                  <ul className="mt-4 list-disc space-y-2 pl-5 marker:text-[#e75041]">
                     {section.bullets.map((bullet) => (
                       <li key={bullet} className="leading-relaxed">
                         {bullet}
@@ -170,7 +160,7 @@ export function TermsAndConditions() {
               Email:{' '}
               <a
                 href="mailto:luxridedxb@gmail.com"
-                className="text-brand-white hover:text-brand-red"
+                className="text-brand-white transition-colors hover:text-[#e75041]"
               >
                 luxridedxb@gmail.com
               </a>
@@ -179,7 +169,7 @@ export function TermsAndConditions() {
               Phone:{' '}
               <a
                 href="tel:+971523695478"
-                className="text-brand-white hover:text-brand-red"
+                className="text-brand-white transition-colors hover:text-[#e75041]"
               >
                 +971 52 369 5478
               </a>

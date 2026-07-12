@@ -1,7 +1,10 @@
+import { useState, type CSSProperties } from 'react';
 import {
   Briefcase,
   CalendarCheck,
   Car,
+  ChevronLeft,
+  ChevronRight,
   Fuel,
   MessageCircle,
   Phone,
@@ -13,23 +16,23 @@ import { scrollToId } from '@/lib/scroll';
 
 const fleet = [
   {
-    title: 'GAC m8',
+    title: 'GAC M8',
     image: '/MPV.png',
     luxury: 'Luxury MPV',
     seats: '6 Seats',
-    luggage: '5 Luggage',
-    driver: 'Professional Driver',
-    toll: 'Toll Gates',
-    fuel: 'Fuel',
+    luggage: 'Laptop Table',
+    driver: 'Professional Chauffeur',
+    toll: 'Wifi',
+    fuel: 'Spa',
   },
   {
-    title: 'GMC',
+    title: 'GMC Yukon XL',
     image: '/SMC-new.png',
-    luxury: 'Luxury MPV',
-    seats: '5 Seats',
-    luggage: '5 Luggage',
-    driver: 'Professional Driver',
-    toll: 'Toll Gates',
+    luxury: 'Luxury SUV',
+    seats: '7 Seats',
+    luggage: 'Luggage',
+    driver: 'Certified Chauffeur',
+    toll: 'Wifi',
     fuel: 'Fuel',
   },
 ];
@@ -50,6 +53,18 @@ function getWhatsAppUrl(vehicleTitle: string, actionLabel: string) {
 }
 
 export function FleetSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const showPrevious = () => {
+    setActiveIndex(
+      (currentIndex) => (currentIndex - 1 + fleet.length) % fleet.length,
+    );
+  };
+
+  const showNext = () => {
+    setActiveIndex((currentIndex) => (currentIndex + 1) % fleet.length);
+  };
+
   return (
     <section
       id="fleet"
@@ -74,8 +89,16 @@ export function FleetSection() {
           </h2>
         </div>
 
-        <div className="mx-auto mt-[30px] grid w-full max-w-[700px] grid-cols-1 gap-[18px] md:grid-cols-2">
-          {fleet.map((vehicle) => {
+        <div className="mx-auto mt-[30px] w-full max-w-[700px] overflow-hidden md:overflow-visible">
+          <div
+            className="flex translate-x-[var(--fleet-offset)] transition-transform duration-500 ease-out motion-reduce:transition-none md:grid md:translate-x-0 md:grid-cols-2 md:gap-[18px]"
+            style={
+              {
+                '--fleet-offset': `-${activeIndex * 100}%`,
+              } as CSSProperties
+            }
+          >
+            {fleet.map((vehicle) => {
             const specs = [
               vehicle.luxury,
               vehicle.seats,
@@ -88,7 +111,7 @@ export function FleetSection() {
             return (
               <article
                 key={vehicle.title}
-                className="group flex min-h-[380px] flex-col overflow-hidden rounded-[7px] border border-[rgba(229,75,43,0.24)] bg-[#1f1c1c] shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-colors duration-300 hover:border-[#e54b2b]"
+                className="group flex min-h-[380px] w-full shrink-0 flex-col overflow-hidden rounded-[7px] border border-[rgba(229,75,43,0.24)] bg-[#1f1c1c] shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-colors duration-300 hover:border-[#e54b2b] md:min-w-0 md:shrink"
               >
                 <div className="relative aspect-[453/260] overflow-hidden rounded-t-[7px] bg-[#151313]">
                   <img
@@ -168,7 +191,28 @@ export function FleetSection() {
                 </div>
               </article>
             );
-          })}
+            })}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-[18px] flex items-center justify-center gap-[18px] md:hidden">
+          <button
+            type="button"
+            onClick={showPrevious}
+            aria-label="Show previous vehicle"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e54b2b]/70 text-[#e54b2b] transition active:bg-[#e54b2b] active:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e54b2b]"
+          >
+            <ChevronLeft aria-hidden="true" size={20} />
+          </button>
+
+          <button
+            type="button"
+            onClick={showNext}
+            aria-label="Show next vehicle"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e54b2b]/70 text-[#e54b2b] transition active:bg-[#e54b2b] active:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e54b2b]"
+          >
+            <ChevronRight aria-hidden="true" size={20} />
+          </button>
         </div>
       </div>
     </section>

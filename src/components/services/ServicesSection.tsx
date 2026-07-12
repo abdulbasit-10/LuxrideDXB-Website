@@ -80,31 +80,30 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="mt-[38px] grid grid-cols-1 gap-[14px] sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-[38px] grid grid-cols-2 gap-[10px] sm:gap-[14px] xl:grid-cols-4">
           {services.map((service) => {
             const Icon = service.icon;
 
             return (
               <article
                 key={service.title}
-                className="flex min-h-[178px] flex-col rounded-[6px] border border-white/[0.08] bg-[#1b1919] px-[16px] py-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.12)] transition-colors duration-300 hover:border-[#e54b2b]"
+                className="flex min-h-[188px] flex-col rounded-[6px] border border-white/[0.08] bg-[#1b1919] px-[12px] py-[14px] shadow-[0_10px_24px_rgba(0,0,0,0.12)] transition-colors duration-300 hover:border-[#e54b2b] sm:min-h-[178px] sm:px-[16px] sm:py-[16px]"
               >
-                <div className="mb-[16px] flex items-center justify-between">
-                  <div className="flex h-[40px] w-[40px] items-center justify-center rounded-[4px] border border-[#e54b2b]/20 bg-[#2b1d1b]">
+                <div className="mb-[13px] flex items-center justify-between sm:mb-[16px]">
+                  <div className="flex h-[36px] w-[36px] items-center justify-center rounded-[4px] border border-[#e54b2b]/20 bg-[#2b1d1b] sm:h-[40px] sm:w-[40px]">
                     <Icon
                       aria-hidden="true"
-                      size={21}
                       strokeWidth={1.8}
-                      className="text-[#E24E37]"
+                      className="h-[19px] w-[19px] text-[#E24E37] sm:h-[21px] sm:w-[21px]"
                     />
                   </div>
                 </div>
 
-                <h3 className="font-serif text-[17px] leading-[1.12] font-bold tracking-[0] text-white">
+                <h3 className="font-serif text-[15.5px] leading-[1.12] font-bold tracking-[0] text-white sm:text-[17px]">
                   {service.title}
                 </h3>
 
-                <p className="mt-[10px] max-w-[220px] font-body text-[13.5px] leading-[1.42] font-normal tracking-[0] text-[#aaa3a2]">
+                <p className="mt-[9px] max-w-[220px] font-body text-[12px] leading-[1.4] font-normal tracking-[0] text-[#aaa3a2] sm:mt-[10px] sm:text-[13.5px] sm:leading-[1.42]">
                   {service.description}
                 </p>
               </article>

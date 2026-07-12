@@ -1,4 +1,5 @@
-﻿import { Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Star } from 'lucide-react';
 
 import quoteIcon from '@/assets/ri_double-quotes-r.svg';
 
@@ -24,6 +25,18 @@ const testimonials = [
 ];
 
 export function ClientVoicesSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((currentIndex) =>
+        (currentIndex + 1) % testimonials.length,
+      );
+    }, 4500);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <section
       id="testimonials"
@@ -43,51 +56,90 @@ export function ClientVoicesSection() {
         </p>
       </div>
 
-      <div className="mx-auto mt-[34px] grid max-w-[1080px] grid-cols-1 gap-[16px] md:grid-cols-2 xl:grid-cols-3">
-        {testimonials.map((testimonial) => (
-          <article
-            key={testimonial.name}
-            className="flex h-auto min-h-[250px] flex-col border border-white/[0.08] bg-[#151313] p-[24px] shadow-[0_18px_28px_rgba(0,0,0,0.18)] transition duration-300 hover:border-[#e75041]"
-          >
-            <div className="mb-7">
-              <img
-                src={quoteIcon}
-                alt=""
-                aria-hidden="true"
-                className="h-[32px] w-[32px]"
-              />
+      <div
+        className="mx-auto mt-[34px] max-w-[1080px] overflow-hidden md:overflow-visible"
+        aria-live="polite"
+      >
+        <div
+          className="flex translate-x-[var(--testimonial-offset)] transition-transform duration-500 ease-out motion-reduce:transition-none md:grid md:translate-x-0 md:grid-cols-2 md:gap-[16px] xl:grid-cols-3"
+          style={
+            {
+              '--testimonial-offset': `-${activeIndex * 100}%`,
+            } as React.CSSProperties
+          }
+        >
+          {testimonials.map((testimonial, index) => {
+            const isActive = index === activeIndex;
 
-              <div
-                aria-label="5 star rating"
-                className="mt-[14px] flex items-center gap-[4px] text-[#ef4e3a]"
+            return (
+              <article
+                key={testimonial.name}
+                aria-current={isActive ? 'true' : undefined}
+                className={`flex min-h-[270px] w-full shrink-0 flex-col border p-[24px] transition-all duration-500 md:min-h-[250px] md:min-w-0 md:shrink md:hover:-translate-y-1 md:hover:border-[#e75041] ${
+                  isActive
+                    ? 'border-[#e75041] bg-[#1d1716] shadow-[0_18px_38px_rgba(231,80,65,0.18)] md:-translate-y-1'
+                    : 'border-white/[0.08] bg-[#151313] shadow-[0_18px_28px_rgba(0,0,0,0.18)] md:opacity-75'
+                }`}
               >
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
-                    key={index}
-                    size={15}
-                    fill="currentColor"
-                    strokeWidth={0}
+                <div className="mb-7">
+                  <img
+                    src={quoteIcon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-[32px] w-[32px]"
                   />
-                ))}
-              </div>
-            </div>
 
-            <p className="font-body text-[14.5px] leading-[1.35] font-normal text-[#e0dddd] italic">
-              {testimonial.quote}
-            </p>
+                  <div
+                    aria-label="5 star rating"
+                    className="mt-[14px] flex items-center gap-[4px] text-[#ef4e3a]"
+                  >
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <Star
+                        key={starIndex}
+                        size={15}
+                        fill="currentColor"
+                        strokeWidth={0}
+                      />
+                    ))}
+                  </div>
+                </div>
 
-            <div className="mt-auto pt-[28px]">
-              <h3 className="font-serif text-[16px] leading-none font-bold text-white">
-                {testimonial.name}
-              </h3>
-              <p className="mt-[12px] font-body text-[13.5px] leading-none font-medium text-[#9f9a9a]">
-                {testimonial.role}
-              </p>
-            </div>
-          </article>
-        ))}
+                <p className="font-body text-[14.5px] leading-[1.35] font-normal text-[#e0dddd] italic">
+                  {testimonial.quote}
+                </p>
+
+                <div className="mt-auto pt-[28px]">
+                  <h3 className="font-serif text-[16px] leading-none font-bold text-white">
+                    {testimonial.name}
+                  </h3>
+                  <p className="mt-[12px] font-body text-[13.5px] leading-none font-medium text-[#9f9a9a]">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mx-auto mt-[22px] flex max-w-[1080px] items-center justify-center md:mt-[28px]">
+        <div className="flex items-center gap-[8px]" aria-label="Choose testimonial">
+          {testimonials.map((testimonial, index) => (
+            <button
+              key={testimonial.name}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Show testimonial ${index + 1}`}
+              aria-current={index === activeIndex ? 'true' : undefined}
+              className={`h-[7px] rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e75041] ${
+                index === activeIndex
+                  ? 'w-[24px] bg-[#e75041]'
+                  : 'w-[7px] bg-white/30 hover:bg-white/60'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
