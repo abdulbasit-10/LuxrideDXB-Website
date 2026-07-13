@@ -1,8 +1,10 @@
+import type { MouseEvent } from 'react';
 import type { IconType } from 'react-icons';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from '@/components/common/Logo';
+import { scrollToId } from '@/lib/scroll';
 import {
   contactDetails,
   footerLegalLinks,
@@ -24,6 +26,25 @@ const contactIcons: Record<string, IconType> = {
 };
 
 export function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  function handleServiceClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) {
+    event.preventDefault();
+    const id = href.replace('#', '');
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      requestAnimationFrame(() => scrollToId(id));
+      return;
+    }
+
+    scrollToId(id);
+  }
+
   return (
     <footer className="w-full bg-brand-black text-brand-gray">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-[34px] px-[22px] py-[42px] md:grid-cols-[1.3fr_0.8fr_1fr] md:px-[32px] lg:gap-[54px] lg:py-[52px] lg:pr-[32px] lg:pl-[8px]">
@@ -68,6 +89,7 @@ export function Footer() {
               <li key={link.label}>
                 <a
                   href={link.href}
+                  onClick={(event) => handleServiceClick(event, link.href)}
                   className="text-[14px] leading-none tracking-[0] transition-colors duration-200 hover:text-[#e75041]"
                 >
                   {link.label}

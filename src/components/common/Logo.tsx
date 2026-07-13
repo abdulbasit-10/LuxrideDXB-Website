@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import type { MouseEventHandler } from 'react';
 import logoSrc from '@/assets/logo.png';
 import { siteConfig } from '@/data/siteConfig';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'header' | 'footer' | 'hero';
   className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 const linkSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {
@@ -19,14 +21,15 @@ const imgSizeStyles: Record<NonNullable<LogoProps['size']>, string> = {
   sm: 'w-auto',
   md: 'w-auto',
   header: 'w-full',
-  footer: 'w-full',
-  hero: 'w-auto lg:w-full',
+  footer: 'w-full object-left',
+  hero: 'w-auto object-left lg:w-full',
 };
 
-export function Logo({ size = 'md', className = '' }: LogoProps) {
+export function Logo({ size = 'md', className = '', onClick }: LogoProps) {
   return (
     <Link
       to="/"
+      onClick={onClick}
       className={`inline-flex items-center ${linkSizeStyles[size]} ${className}`}
     >
       <img

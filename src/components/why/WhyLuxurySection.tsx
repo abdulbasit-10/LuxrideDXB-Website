@@ -1,15 +1,38 @@
 import { useState } from 'react';
 import whyImage from '@/assets/why.png';
-import cognacInterior from '@/assets/luxury-interior-cognac.png';
-import dashboardInterior from '@/assets/luxury-interior-dashboard.png';
 import turquoiseInterior from '@/assets/luxury-interior-turquoise.png';
+import turquoiseDashboardInterior from '@/assets/luxury-interior-turquoise-dashboard.jpg';
+import suvCargo from '@/assets/why-suv-cargo.jpg';
+import suvRearSeats from '@/assets/why-suv-rear-seats.jpg';
+import suvPanoramicSeats from '@/assets/why-suv-panoramic-seats.jpg';
+import suvStarlightCabin from '@/assets/why-suv-starlight-cabin.jpg';
+import suvTurquoiseCargo from '@/assets/why-suv-turquoise-cargo.jpg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
   { src: whyImage, alt: 'Luxury vehicle interior with illuminated cabin' },
-  { src: cognacInterior, alt: 'Luxury cognac leather passenger cabin at night' },
-  { src: dashboardInterior, alt: 'Premium dashboard overlooking the Dubai skyline' },
-  { src: turquoiseInterior, alt: 'Turquoise leather captain seats in a luxury cabin' },
+  {
+    src: turquoiseInterior,
+    alt: 'Turquoise leather captain seats in a luxury cabin',
+  },
+  {
+    src: turquoiseDashboardInterior,
+    alt: 'Turquoise leather luxury SUV interior overlooking Downtown Dubai',
+  },
+  { src: suvCargo, alt: 'Spacious luxury SUV cargo compartment' },
+  { src: suvRearSeats, alt: 'Black leather rear seats in a luxury SUV' },
+  {
+    src: suvPanoramicSeats,
+    alt: 'Luxury SUV rear cabin with panoramic roof',
+  },
+  {
+    src: suvStarlightCabin,
+    alt: 'Premium SUV cabin with starlight roof overlooking Dubai',
+  },
+  {
+    src: suvTurquoiseCargo,
+    alt: 'Luxury SUV cargo area with turquoise leather seats',
+  },
 ];
 
 const features = [
@@ -96,7 +119,7 @@ export function WhyLuxurySection() {
             src={galleryImages[activeImage].src}
             alt={galleryImages[activeImage].alt}
             className={`h-full w-full object-cover object-center ${
-              activeImage === 0 ? 'scale-[1.1]' : ''
+              activeImage === 0 ? 'scale-[1.12]' : ''
             }`}
           />
           <button

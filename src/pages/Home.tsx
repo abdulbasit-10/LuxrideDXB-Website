@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { FiCalendar, FiClock, FiMapPin, FiPhone } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
 import { Container } from '@/components/common/Container';
 import { ContactSection } from '@/components/contact/ContactSection';
 import { FleetSection } from '@/components/fleet/FleetSection';
@@ -20,6 +19,21 @@ interface BookingForm {
 
 const WHATSAPP_NUMBER = '971523695478';
 
+function formatTimeWithPeriod(time: string) {
+  const [hours, minutes] = time.split(':').map(Number);
+
+  if (!Number.isInteger(hours) || !Number.isInteger(minutes)) {
+    return time;
+  }
+
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const twelveHour = hours % 12 || 12;
+
+  return `${twelveHour.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')} ${period}`;
+}
+
 export function Home() {
   const [formData, setFormData] = useState<BookingForm>({
     fullName: '',
@@ -29,11 +43,6 @@ export function Home() {
     time: '',
     phone: '',
   });
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error';
-    message: string;
-  } | null>(null);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -60,25 +69,12 @@ export function Home() {
       `Pickup: ${formData.pickupLocation}`,
       `Drop-off: ${formData.dropoffLocation}`,
       `Date: ${formData.date}`,
-      `Time: ${formData.time}`,
+      `Time: ${formatTimeWithPeriod(formData.time)}`,
     ].join('\n');
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    const whatsappWindow = window.open(
-      whatsappUrl,
-      '_blank',
-      'noopener,noreferrer',
-    );
-
-    if (!whatsappWindow) {
-      window.location.href = whatsappUrl;
-      return;
-    }
-
-    setSubmitStatus({
-      type: 'success',
-      message: 'WhatsApp opened. Please press Send to share your booking request.',
-    });
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    window.setTimeout(() => window.location.reload(), 150);
   };
 
   const travelSteps = [
@@ -152,10 +148,10 @@ export function Home() {
 
         {/* Hero content */}
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center px-[18px] text-center lg:h-full">
-          <h1 className="font-serif text-[42px] leading-[0.96] font-bold tracking-[-0.02em] text-[#e75041] lg:mt-[18px] lg:text-[54px]">
+          <h1 className="font-serif text-[42px] leading-[0.96] font-bold tracking-[-0.02em] text-[#e75041] lg:mt-[20px] lg:text-[54px]">
             LuxRideDXB
           </h1>
-          <p className="mt-[6px] font-body text-[14px] leading-none font-bold text-brand-white lg:text-[15px]">
+          <p className="mt-[12px] font-body text-[14px] leading-none font-bold text-brand-white lg:text-[15px]">
             Arrive Like You Mean It.
           </p>
           <div className="mt-[16px] max-w-[960px] text-center">
@@ -239,7 +235,7 @@ export function Home() {
                       value={formData.date}
                       onChange={handleInputChange}
                       required
-                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-white transition focus:border-[#e75041] focus:outline-none"
+                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
                     />
                   </span>
                 </label>
@@ -257,7 +253,7 @@ export function Home() {
                       value={formData.time}
                       onChange={handleInputChange}
                       required
-                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-white transition focus:border-[#e75041] focus:outline-none"
+                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
                     />
                   </span>
                 </label>
@@ -284,23 +280,10 @@ export function Home() {
 
               <button
                 type="submit"
-                className="mx-auto mt-[28px] flex h-[48px] w-full max-w-[240px] items-center justify-center gap-[8px] bg-[#e75041] font-figma-nav text-[15px] leading-none font-bold tracking-[0.08em] text-white uppercase transition duration-200 hover:bg-[#f26354] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e75041]"
+                className="mx-auto mt-[28px] flex h-[42px] w-full max-w-[180px] items-center justify-center bg-[#e75041] px-[18px] font-figma-nav text-[14px] leading-none font-bold tracking-[0.08em] text-white uppercase transition duration-200 hover:bg-[#f26354] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e75041]"
               >
-                <FaWhatsapp aria-hidden="true" className="h-[18px] w-[18px]" />
-                Continue on WhatsApp
+                Enquire Now
               </button>
-              {submitStatus && (
-                <p
-                  role="status"
-                  className={`mt-[14px] text-center font-body text-[14px] font-medium ${
-                    submitStatus.type === 'success'
-                      ? 'text-green-400'
-                      : 'text-[#ff7b6e]'
-                  }`}
-                >
-                  {submitStatus.message}
-                </p>
-              )}
             </form>
           </div>
         </div>

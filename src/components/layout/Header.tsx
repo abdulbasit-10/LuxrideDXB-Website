@@ -72,10 +72,20 @@ export function Header() {
     scrollToId(id);
   }
 
+  function handleLogoClick(event: MouseEvent<HTMLAnchorElement>) {
+    setIsMenuOpen(false);
+    setActiveHash('#home');
+
+    if (location.pathname === '/') {
+      event.preventDefault();
+      scrollToId('home');
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full overflow-visible bg-black">
       <div className="relative mx-auto flex h-20 w-full max-w-[1240px] items-center justify-between px-8 md:px-12 lg:h-[84px] lg:pr-[32px] lg:pl-[8px]">
-        <Logo size="hero" />
+        <Logo size="hero" onClick={handleLogoClick} />
 
         <nav className="hidden items-center gap-[28px] lg:absolute lg:right-[18px] lg:top-[24px] lg:flex">
           {mainNavLinks.map((link) => (

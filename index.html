@@ -4,11 +4,69 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LuxRideDXB </title>
+    <title>LuxRideDXB</title>
     <meta
       name="description"
-      content="Dubai's premier luxury chauffeur service — connecting discerning clients with world-class transport since 2017."
+      content="Dubai's premier luxury chauffeur service - connecting discerning clients with world-class transport since 2017."
     />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #171414;
+      }
+
+      .initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background:
+          radial-gradient(circle at center, rgba(231, 80, 65, 0.1), transparent 34%),
+          #171414;
+      }
+
+      .initial-loader__logo {
+        width: min(210px, 54vw);
+        height: auto;
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.35));
+      }
+
+      .initial-loader__line {
+        width: 74px;
+        height: 2px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .initial-loader__line::after {
+        display: block;
+        width: 36px;
+        height: 100%;
+        content: '';
+        background: #e75041;
+        animation: initial-loader-slide 1s ease-in-out infinite alternate;
+      }
+
+      @keyframes initial-loader-slide {
+        from {
+          transform: translateX(-36px);
+        }
+        to {
+          transform: translateX(74px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .initial-loader__line::after {
+          animation: none;
+          transform: translateX(19px);
+        }
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +75,16 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="initial-loader" role="status" aria-label="Loading LuxRideDXB">
+        <img
+          class="initial-loader__logo"
+          src="/logo.png"
+          alt="LuxRideDXB"
+        />
+        <span class="initial-loader__line" aria-hidden="true"></span>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

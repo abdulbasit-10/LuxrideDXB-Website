@@ -6,11 +6,13 @@ import {
   ChevronLeft,
   ChevronRight,
   Fuel,
+  Laptop,
   MessageCircle,
   Phone,
-  Ticket,
+  Sparkles,
   User,
   Users,
+  Wifi,
 } from 'lucide-react';
 import { scrollToId } from '@/lib/scroll';
 
@@ -36,8 +38,6 @@ const fleet = [
     fuel: 'Fuel',
   },
 ];
-
-const specIcons = [Car, Users, Briefcase, User, Ticket, Fuel];
 
 const actions = [
   { label: 'Call Now', icon: Phone, type: 'whatsapp' },
@@ -100,12 +100,18 @@ export function FleetSection() {
           >
             {fleet.map((vehicle) => {
             const specs = [
-              vehicle.luxury,
-              vehicle.seats,
-              vehicle.luggage,
-              vehicle.driver,
-              vehicle.toll,
-              vehicle.fuel,
+              { label: vehicle.luxury, icon: Car },
+              { label: vehicle.seats, icon: Users },
+              {
+                label: vehicle.luggage,
+                icon: vehicle.luggage === 'Laptop Table' ? Laptop : Briefcase,
+              },
+              { label: vehicle.driver, icon: User },
+              { label: vehicle.toll, icon: Wifi },
+              {
+                label: vehicle.fuel,
+                icon: vehicle.fuel === 'Spa' ? Sparkles : Fuel,
+              },
             ];
 
             return (
@@ -133,12 +139,11 @@ export function FleetSection() {
                   </h3>
 
                   <div className="mt-[13px] grid grid-cols-2 gap-x-[9px] gap-y-[9px]">
-                    {specs.map((spec, index) => {
-                      const Icon = specIcons[index];
+                    {specs.map(({ label, icon: Icon }) => {
 
                       return (
                         <div
-                          key={spec}
+                          key={label}
                           className="flex min-w-0 items-center gap-[10px]"
                         >
                           <Icon
@@ -147,7 +152,7 @@ export function FleetSection() {
                             strokeWidth={1.9}
                           />
                           <span className="min-w-0 font-body text-[11px] leading-[1.2] font-medium text-[#aaa3a1]">
-                            {spec}
+                            {label}
                           </span>
                         </div>
                       );
