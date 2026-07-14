@@ -235,7 +235,7 @@ export function Home() {
                       value={formData.date}
                       onChange={handleInputChange}
                       required
-                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
+                      className="booking-date-time h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
                     />
                   </span>
                 </label>
@@ -253,7 +253,7 @@ export function Home() {
                       value={formData.time}
                       onChange={handleInputChange}
                       required
-                      className="h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
+                      className="booking-date-time h-[50px] w-full border border-transparent bg-brand-black-soft pr-[18px] pl-[46px] font-body text-[15px] leading-none font-semibold text-brand-gray [color-scheme:dark] transition focus:border-[#e75041] focus:outline-none"
                     />
                   </span>
                 </label>

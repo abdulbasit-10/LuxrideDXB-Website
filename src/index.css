@@ -20,3 +20,7 @@
 body {
   @apply bg-white font-body text-brand-black;
 }
+
+.booking-date-time::-webkit-calendar-picker-indicator {
+  opacity: 0.55;
+}
