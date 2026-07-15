@@ -63,7 +63,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="mx-auto flex w-full max-w-[1440px] justify-center bg-[#171515] px-[18px] pt-[46px] pb-[30px] lg:px-[24px]"
+      className="flex w-full justify-center bg-[#171515] px-[18px] pt-[46px] pb-[30px] lg:px-[24px]"
       aria-label="Our services"
     >
       <div className="w-full max-w-[1080px]">

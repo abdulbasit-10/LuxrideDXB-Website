@@ -40,7 +40,7 @@ export function ClientVoicesSection() {
   return (
     <section
       id="testimonials"
-      className="mx-auto w-full max-w-[1440px] bg-[#171414] px-[24px] py-[56px] md:px-[32px]"
+      className="w-full bg-[#171414] px-[24px] py-[56px] md:px-[32px]"
     >
       <div className="mx-auto max-w-[760px] text-center">
         <p className="font-body text-[13px] leading-none font-medium tracking-[0.28em] text-[#ef4e3a]">

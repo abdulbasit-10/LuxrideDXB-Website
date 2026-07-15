@@ -77,7 +77,7 @@ export function WhyLuxurySection() {
   return (
     <section
       id="about"
-      className="mx-auto h-auto w-full max-w-[1440px] bg-[#171414] px-[20px] pt-[38px] pb-[38px] md:px-[32px] md:pt-[44px] md:pb-[44px] lg:px-[56px] lg:pt-[48px] lg:pb-[42px]"
+      className="h-auto w-full bg-[#171414] px-[20px] pt-[38px] pb-[38px] md:px-[32px] md:pt-[44px] md:pb-[44px] lg:px-[56px] lg:pt-[48px] lg:pb-[42px]"
       aria-label="Why LuxRideDXB"
     >
       <div className="mx-auto grid h-full max-w-[1120px] grid-cols-1 items-start gap-[34px] lg:grid-cols-[minmax(0,520px)_minmax(0,420px)] lg:justify-between lg:gap-[64px]">
