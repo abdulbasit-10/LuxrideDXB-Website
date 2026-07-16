@@ -29,7 +29,7 @@ const services = [
     icon: BriefcaseBusiness,
   },
   {
-    title: 'Weddings',
+    title: 'Parties and Events',
     description:
       'Unforgettable wedding car arrangements tailored to your perfect day.',
     icon: Heart,
@@ -40,23 +40,23 @@ const services = [
     icon: Clock3,
   },
   {
-    title: 'Private Luxury',
-    description:
-      'The ultimate bespoke journey curated, confidential, and flawless.',
-    icon: Shield,
-  },
-  {
-    title: 'Roadshows',
+    title: 'Half-Day Chauffeur',
     description:
       'Multi-stop investor and media roadshows coordinated to the minute.',
     icon: Map,
   },
   {
-    title: 'Full-Day Hire',
+    title: 'Full-Day Chauffeur',
     description:
       'Dedicated chauffeur from sunrise to midnight for business or leisure.',
     icon: CalendarDays,
   },
+    {
+    title: 'City to City',
+    description:
+      'The ultimate bespoke journey curated, confidential, and flawless.',
+    icon: Shield,
+  }
 ];
 
 export function ServicesSection() {

@@ -110,7 +110,7 @@ export function Footer() {
                 <li key={detail.label}>
                   <a
                     href={detail.href}
-                    className="flex min-w-0 items-center gap-[10px] text-[14px] leading-none tracking-[0] transition-colors duration-200 hover:text-[#e75041]"
+                    className="flex min-w-0 items-center gap-[10px] text-[14px] leading-[1.35] tracking-[0] transition-colors duration-200 hover:text-[#e75041]"
                   >
                     <Icon className="shrink-0 text-[#e75041]" size={16} />
                     <span className="min-w-0 truncate">{detail.value}</span>

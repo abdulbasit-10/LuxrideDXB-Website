@@ -20,16 +20,20 @@ const fleet = [
   {
     title: 'GAC M8',
     image: '/MPV.png',
+    imagePosition: 'center',
+    imageScale: 'scale-100',
     luxury: 'Luxury MPV',
     seats: '6 Seats',
     luggage: 'Laptop Table',
-    driver: 'Professional Chauffeur',
+    driver: 'Certified Chauffeur',
     toll: 'Wifi',
     fuel: 'Spa',
   },
   {
     title: 'GMC Yukon XL',
-    image: '/SMC-new.png',
+    image: '/13.jpeg',
+    imagePosition: 'center 70%',
+    imageScale: 'scale-90',
     luxury: 'Luxury SUV',
     seats: '7 Seats',
     luggage: 'Luggage',
@@ -126,7 +130,8 @@ export function FleetSection() {
                     width="453"
                     height="341"
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className={`h-full w-full object-cover ${vehicle.imageScale}`}
+                    style={{ objectPosition: vehicle.imagePosition }}
                   />
                   <span className="absolute top-[12px] left-[12px] bg-[#e54b2b] px-[8px] py-[5px] font-body text-[8px] leading-none font-bold tracking-[0.12em] text-white uppercase">
                     BEST FOR GROUPS

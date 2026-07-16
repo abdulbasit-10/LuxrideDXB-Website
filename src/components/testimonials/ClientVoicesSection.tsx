@@ -75,9 +75,9 @@ export function ClientVoicesSection() {
               <article
                 key={testimonial.name}
                 aria-current={isActive ? 'true' : undefined}
-                className={`flex min-h-[270px] w-full shrink-0 flex-col border p-[24px] transition-all duration-500 md:min-h-[250px] md:min-w-0 md:shrink md:hover:-translate-y-1 md:hover:border-[#e75041] ${
+                className={`flex min-h-[270px] w-full shrink-0 flex-col border p-[24px] transition-all duration-500 md:min-h-[250px] md:min-w-0 md:shrink md:hover:border-[#e75041] ${
                   isActive
-                    ? 'border-[#e75041] bg-[#1d1716] shadow-[0_18px_38px_rgba(231,80,65,0.18)] md:-translate-y-1'
+                    ? 'border-[#e75041] bg-[#1d1716] shadow-[0_18px_38px_rgba(231,80,65,0.18)]'
                     : 'border-white/[0.08] bg-[#151313] shadow-[0_18px_28px_rgba(0,0,0,0.18)] md:opacity-75'
                 }`}
               >

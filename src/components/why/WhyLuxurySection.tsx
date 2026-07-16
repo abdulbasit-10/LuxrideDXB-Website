@@ -5,9 +5,10 @@ import turquoiseDashboardInterior from '@/assets/luxury-interior-turquoise-dashb
 import suvCargo from '@/assets/why-suv-cargo.jpg';
 import suvRearSeats from '@/assets/why-suv-rear-seats.jpg';
 import suvPanoramicSeats from '@/assets/why-suv-panoramic-seats.jpg';
-import suvStarlightCabin from '@/assets/why-suv-starlight-cabin.jpg';
+import suvStarlightCabin from '@/assets/why-suv-starlight-cabin.jpeg';
 import suvTurquoiseCargo from '@/assets/why-suv-turquoise-cargo.jpg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 
 const galleryImages = [
   { src: whyImage, alt: 'Luxury vehicle interior with illuminated cabin' },
