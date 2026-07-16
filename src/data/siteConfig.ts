@@ -18,9 +18,13 @@ export const mainNavLinks: NavLink[] = [
 
 export const footerServiceLinks: FooterLink[] = [
   { label: 'Airport Transfers', href: '#services' },
-  { label: 'Corporate Transport', href: '#services' },
   { label: 'VIP Events', href: '#services' },
-  { label: 'Weddings', href: '#services' },
+  { label: 'Corporate Transport', href: '#services' },
+  { label: 'Parties and Events', href: '#services' },
+  { label: 'Hourly Chauffeur', href: '#services' },
+  { label: 'Half-Day Chauffeur', href: '#services' },
+  { label: 'Full-Day Chauffeur', href: '#services' },
+  { label: 'City to City', href: '#services' },
 ];
 
 export const footerLegalLinks: FooterLink[] = [
